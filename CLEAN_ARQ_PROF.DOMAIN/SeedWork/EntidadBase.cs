@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CLEAN_ARQ_PROF.DOMAIN.Abstractions
+namespace CLEAN_ARQ_PROF.DOMAIN.SeedWork
 {
-    public abstract class Entity
+    public abstract class EntidadBase
     {
-        protected Entity(Guid idUsuario) 
+        protected EntidadBase(Guid idUsuario)
         {
             IdUsuario = idUsuario;
         }
         public Guid IdUsuario { get; init; } // No podra actualizarse ya que Guid siempre debe ser único.
-    }
+}
 }
