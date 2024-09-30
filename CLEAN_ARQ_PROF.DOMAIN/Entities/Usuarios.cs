@@ -105,11 +105,4 @@ namespace CLEAN_ARQ_PROF.DOMAIN.Entities
 
     }
 
-    public sealed class Result()
-    {
-        public string? Mensaje { get; set; }
-        public bool Status { get; set; }
-        public bool Error { get; set; }
-    }
-
 }

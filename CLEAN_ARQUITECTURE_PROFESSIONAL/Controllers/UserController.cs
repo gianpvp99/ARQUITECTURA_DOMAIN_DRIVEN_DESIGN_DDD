@@ -1,37 +1,21 @@
-using CLEAN_ARQ_PROF.DOMAIN.Entities;
+﻿using CLEAN_ARQ_PROF.DOMAIN.Entities;
 using CLEAN_ARQ_PROF.DOMAIN.ValueObjects.Usuario;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CLEAN_ARQUITECTURE_PROFESSIONAL.Controllers
+namespace CLEAN_ARQUITECTURE_PROFESSIONAL.SERVICE.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class UserController : Controller
     {
-        private static readonly string[] Summaries = new[]
+        [HttpGet]
+        [Route("Prueba")]
+        public IActionResult Index()
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
+            return Ok(new { mensaje = "entro"}) ;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
-        [Route("prueba")]
+        [Route("Prueba2")]
         [HttpGet]
         public IActionResult prueba()
         {
@@ -63,7 +47,11 @@ namespace CLEAN_ARQUITECTURE_PROFESSIONAL.Controllers
                 idUsuarioModificacion: 100,
                 ultimoLogin: DateTime.UtcNow
                 );
-            return Ok(user);
+            var probando = new List<Usuarios>();
+            probando.Add(user);
+            probando.Add(user);
+            var response = Result<Usuarios>.ListResult(probando, "Listado exitoso", true, false);
+            return Ok(response);
         }
     }
 }
